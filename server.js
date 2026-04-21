@@ -37,12 +37,8 @@ const normalizeUsername = (value) =>
 
 const isValidUsername = (value) => /^[a-z0-9_]{3,20}$/.test(value);
 
-<<<<<<< HEAD
 const isValidPassword = (value) =>
   typeof value === "string" && value.length >= 6;
-=======
-const isValidPassword = (value) => typeof value === "string" && value.length >= 6;
->>>>>>> 041bd352b517b0ecc8ab34ecd9c4da0c47eb35a6
 
 const signToken = (user) =>
   jwt.sign({ sub: user.id, username: user.username }, JWT_SECRET, {

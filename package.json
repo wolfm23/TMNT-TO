@@ -6,11 +6,7 @@
     "start": "node server.js"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@supabase/supabase-js": "^2.104.0",
-=======
-    "@supabase/supabase-js": "^2.49.0",
->>>>>>> 041bd352b517b0ecc8ab34ecd9c4da0c47eb35a6
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.4.5",
