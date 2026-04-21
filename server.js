@@ -21,7 +21,8 @@ if (!SUPABASE_URL || !SUPABASE_SERVICE_ROLE_KEY || !JWT_SECRET) {
   process.exit(1);
 }
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, {
+const cleanedSupabaseUrl = SUPABASE_URL.replace(/\/rest\/v1\/?$/, "");
+const supabase = createClient(cleanedSupabaseUrl, SUPABASE_SERVICE_ROLE_KEY, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
 
@@ -114,7 +115,10 @@ app.post("/api/register", async (req, res) => {
     res.cookie(TOKEN_COOKIE, token, { httpOnly: true, sameSite: "lax" });
     return res.json({ profile: data });
   } catch (error) {
-    return res.status(500).json({ error: "Unexpected server error" });
+    console.error("Register error:", error);
+    return res
+      .status(500)
+      .json({ error: error?.message || "Unexpected server error" });
   }
 });
 
@@ -156,7 +160,10 @@ app.post("/api/login", async (req, res) => {
       },
     });
   } catch (error) {
-    return res.status(500).json({ error: "Unexpected server error" });
+    console.error("Login error:", error);
+    return res
+      .status(500)
+      .json({ error: error?.message || "Unexpected server error" });
   }
 });
 

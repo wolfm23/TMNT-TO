@@ -453,13 +453,9 @@ const endLevel = async (won) => {
     (won ? gameState.unitsRemaining * 2 : 0);
   const newMeta = profile.meta_currency + metaEarned;
   const newMax =
-<<<<<<< HEAD
     won &&
     profile.max_level === gameState.level.id &&
     gameState.level.id < LEVELS.length
-=======
-    won && profile.max_level === gameState.level.id && gameState.level.id < LEVELS.length
->>>>>>> 041bd352b517b0ecc8ab34ecd9c4da0c47eb35a6
       ? profile.max_level + 1
       : profile.max_level;
 
@@ -473,10 +469,6 @@ const endLevel = async (won) => {
     });
     profile = result.profile;
   } catch (error) {
-<<<<<<< HEAD
-=======
-    // keep local profile fallback
->>>>>>> 041bd352b517b0ecc8ab34ecd9c4da0c47eb35a6
     profile.meta_currency = newMeta;
     profile.max_level = newMax;
   }
